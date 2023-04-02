@@ -1,0 +1,1 @@
+# This file is required to make "clean_folder" a package
