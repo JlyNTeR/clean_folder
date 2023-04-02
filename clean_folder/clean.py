@@ -4,20 +4,12 @@ import zipfile
 from pathlib import Path
 from normalize import normalize
 
-
-
-
-
 CATEGORIES = {'audio': ['.mp3','.ogg', '.wav', '.amr'],
               'images': ['.png', '.jpg', '.svg', '.jpeg'],
               'documents': ['.txt', '.doc', '.docx', '.pdf', '.xlsx', '.pptx'],
               'video': ['.avi', '.mp4', '.mov', '.mkv'],
               'archives': ['.zip', '.tar', '.gz']
               }
-
-
-
-
 
 def move_file(file:Path, root_dir:Path, category:str):
     
@@ -29,7 +21,6 @@ def move_file(file:Path, root_dir:Path, category:str):
     
     if not target_dir.exists():
         target_dir.mkdir()\
-
 
     if category == 'archives':
         archive_dir = target_dir.joinpath(normalize(file.stem))
@@ -46,9 +37,6 @@ def move_file(file:Path, root_dir:Path, category:str):
         normalized_name = normalize(file.name)
         return file.replace(target_dir.joinpath(normalized_name))
 
-
-
-
 def get_categories(file:Path):
     extension = file.suffix.lower()
     
@@ -57,8 +45,6 @@ def get_categories(file:Path):
             return cat
     
     return 'unknown'
-
-
 
 def sort_dir(root_dir:Path, current_dir:Path):
     
@@ -70,8 +56,6 @@ def sort_dir(root_dir:Path, current_dir:Path):
         else:
             sort_dir(root_dir, item)
             item.rmdir()
-
-
 
 def main ():
     try:
@@ -86,8 +70,6 @@ def main ():
     sort_dir(path, path)
     
     return 'all ok'
-
-
 
 if __name__ == '__main__':
     print(main())

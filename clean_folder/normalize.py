@@ -11,7 +11,6 @@ for c, l in zip(list(CYRILLIC_SYMBOLS), TRANSLATION):
 for i in BAD_SYMBOLS:
     TRANS[ord(i)] = "_"
 
-
 def normalize(name: str) -> str:
     
     trans_name = name.translate(TRANS)
